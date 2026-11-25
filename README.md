@@ -1,7 +1,5 @@
 # library_data_generator
 
-# Community Library Data Pipeline
-
 ## Project Overview
 
 This project develops a reusable data pipeline for a fictional community library dataset as part of the IB9SR0 Analytics Engineering, AI & Visualisation individual assignment.
