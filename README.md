@@ -1,36 +1,75 @@
-# library_data_generator
+# Community Library Data Pipeline
 
 ## Project Overview
 
-This project develops a reusable data pipeline for a fictional community library dataset as part of the IB9SR0 Analytics Engineering, AI & Visualisation individual assignment.
+This project develops an analytics engineering data pipeline using a fictional community library dataset covering the year 2025.
 
-The pipeline will transform the generated source data through three layers:
+The project aims to transform raw library data into clean, reliable and business-ready datasets for analysis and visualisation.
 
-- **Bronze:** Raw data ingestion and load information.
-- **Silver:** Data cleaning, standardisation and deduplication.
-- **Gold:** Business-ready tables for analysis and Tableau visualisation.
+## Project Architecture
+
+The pipeline follows a three-layer architecture:
+
+### Bronze Layer
+- Ingest original source files.
+- Preserve raw data.
+- Record data ingestion information.
+
+### Silver Layer
+- Clean and standardise data.
+- Handle missing and inconsistent values.
+- Resolve classification mapping issues.
+- Validate loan periods and fine calculations.
+- Remove duplicates where appropriate.
+
+### Gold Layer
+- Create business-ready datasets.
+- Prepare analytical tables.
+- Support Tableau visualisations.
 
 ## Current Progress
 
 - [x] Initial data inspection
-- [x] Data quality and profiling checks
+- [x] Data profiling
+- [x] Postcode quality checks
 - [x] Loan period validation
 - [x] Fine validation
 - [ ] Resolve classification mapping issues
-- [ ] Correct fine calculation issues
+- [ ] Investigate fine mismatches
 - [ ] Implement Bronze layer
 - [ ] Implement Silver layer
 - [ ] Implement Gold layer
-- [ ] Build Tableau dashboard
+- [ ] Develop Tableau dashboard
+- [ ] Complete documentation and testing
 
-## Repository Structure
-
-The repository will contain the pipeline notebook, data quality tests, documentation and final outputs.
-
-## Tools
+## Tools and Technologies
 
 - Python
 - Pandas
 - Google Colab
 - GitHub
 - Tableau
+
+## Repository Structure
+
+```text
+library_data_generator/
+│
+├── library_data_generator.ipynb
+├── README.md
+├── docs/
+│   └── test_log.md
+├── data/
+│   ├── bronze/
+│   ├── silver/
+│   └── gold/
+└── tests/
+```
+
+## Data Privacy
+
+The project uses an individually generated fictional library dataset. Original data and personal identifiers should be handled carefully and should not be exposed publicly.
+
+## Development Approach
+
+Development is documented through incremental GitHub commits to demonstrate progress throughout the project.
