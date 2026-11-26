@@ -76,3 +76,25 @@ The 30 affected loan records represent an intentional referential integrity issu
 **Planned treatment:**
 
 Preserve the original Bronze data. Identify unmatched item references during Silver transformation and flag or quarantine affected records so they are not incorrectly included in downstream Gold reporting. Document the treatment and its impact on record counts.
+
+### Bronze Layer — Raw Data Ingestion
+
+The Bronze layer was created to preserve the original source datasets before any cleaning or transformation.
+
+The following datasets were saved as CSV files in `data/bronze/`:
+
+| Dataset | Records |
+|---|---:|
+| Items | 1,200 |
+| Loans | 6,060 |
+| Members | 832 |
+| Branches | 8 |
+
+**Validation performed:**
+- Confirmed that all four CSV files were successfully created.
+- Compared the original and Bronze record counts.
+- Checked that the original and Bronze column names match.
+
+All four datasets passed these checks.
+
+No cleaning or corrections were applied during Bronze ingestion. Data quality issues identified during inspection will be investigated and handled in the Silver layer.
