@@ -56,12 +56,23 @@ Further transformations and corrections will be documented as development progre
 
 ### Referential integrity – loan item references
 
-**Status: Failed – investigation required**
+**Status: Identified – intentional data-quality issue**
 
+**Initial findings:**
 - Original items table contains 1,200 unique item IDs (`I0001`–`I1200`).
 - Mapping table contains the same 1,200 item IDs.
 - No duplicate item IDs were found in the mapping table.
 - Original loan data contains 25 distinct item IDs that do not exist in the items table.
-- These unmatched IDs occur in 30 loan records.
+- These invalid references occur in 30 loan records.
 
-**Conclusion:** The original generated loan dataset contains invalid item references. This is a referential integrity issue, not a missing classification or mapping-table issue. The generator logic requires further investigation before a correction is applied.
+**Root cause:**
+
+Inspection of the supplied `generate_library_data_by_id.py` generator identified an intentional data-quality injection in the loan-generation section. The generator replaces 0.5% of loan item references with randomly generated IDs between `I1201` and `I1299`.
+
+**Conclusion:**
+
+The 30 affected loan records represent an intentional referential integrity issue in the supplied dataset, rather than an error in the mapping table or the student's data preparation.
+
+**Planned treatment:**
+
+Preserve the original Bronze data. Identify unmatched item references during Silver transformation and flag or quarantine affected records so they are not incorrectly included in downstream Gold reporting. Document the treatment and its impact on record counts.
