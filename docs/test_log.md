@@ -77,24 +77,25 @@ The 30 affected loan records represent an intentional referential integrity issu
 
 Preserve the original Bronze data. Identify unmatched item references during Silver transformation and flag or quarantine affected records so they are not incorrectly included in downstream Gold reporting. Document the treatment and its impact on record counts.
 
-### Bronze Layer — Raw Data Ingestion
+# Project Progress Log
 
-The Bronze layer was created to preserve the original source datasets before any cleaning or transformation.
+## Bronze Layer
+- Created the Bronze data folder.
+- Saved the raw items, loans, members and branches datasets.
+- Checked that saved row counts and columns matched the original datasets.
+- Preserved the original data without applying cleaning transformations.
 
-The following datasets were saved as CSV files in `data/bronze/`:
+## Silver Layer – Items
+- Converted replacement costs from currency-formatted text to numeric values.
+- Identified 24 missing replacement costs and retained them as missing.
+- Validated replacement costs against expected ranges for each item type: 0 out-of-range values.
+- Compared item classifications with the reference mapping: 0 mismatches.
+- Standardised classifications into 8 consistent groups.
+- Checked for duplicate item IDs: 0 duplicates.
+- Confirmed the Silver dataset contains 1,200 rows and 8 columns.
+- Saved and verified `data/silver/silver_items.csv`.
 
-| Dataset | Records |
-|---|---:|
-| Items | 1,200 |
-| Loans | 6,060 |
-| Members | 832 |
-| Branches | 8 |
-
-**Validation performed:**
-- Confirmed that all four CSV files were successfully created.
-- Compared the original and Bronze record counts.
-- Checked that the original and Bronze column names match.
-
-All four datasets passed these checks.
-
-No cleaning or corrections were applied during Bronze ingestion. Data quality issues identified during inspection will be investigated and handled in the Silver layer.
+## Next Steps
+- Commit the Silver items work and CSV to GitHub.
+- Continue Silver-layer cleaning and validation for loans, members and branches.
+- Record validation results and any data-quality issues in the project log.
